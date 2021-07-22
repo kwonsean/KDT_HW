@@ -1,0 +1,43 @@
+a{
+  text-decoration: none;
+}
+
+/* HEADER */
+header{
+  background-color: rgb(9, 9, 61);
+  background: linear-gradient( 90deg,rgb(171, 181, 226),rgb(9, 9, 61) 20%);
+}
+.inner{
+  width: 1280px;
+  height: 56px;
+  margin: 0 auto;
+}
+.left-side{
+  display: flex;
+  padding: 11px 0;
+}
+.left-side .logo{
+  margin-right: 5px;
+}
+.left-side .left-menu{
+  display: flex;
+  align-items: center;
+
+}
+.left-side .left-menu li{
+
+}
+.left-side .left-menu li a{
+  font-size: 15px;
+  font-weight:550;
+  color: #fff;
+  padding: 8px;
+}
+.left-side .left-menu li a:hover{
+  color: rgba(225, 225, 225,.5);
+}
+.arrow{
+  width: 14px;
+  margin-left: 7px;
+  opacity: 0.5;
+}
