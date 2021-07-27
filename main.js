@@ -20,7 +20,7 @@ const amount = +line;
 const item = getItemByAmount(data, amount);
 
 const msg = item ? 
-    `${amount}원으로 살 수 있는 가장 비싼 상품은 [${item.name}]이고, 가격은 ${item.price}원입니다.` : 
+    `${amount}원으로 살 수 있는 가장 비싼 상품은 [${item.name}]이고, 가격은 ${item.price}원입니다.` :  //객체로 리턴받네
     '살 수 있는 상품이 없습니다.';
 
 // 결과 출력
