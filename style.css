@@ -80,24 +80,26 @@ header{
   display: flex;
   align-items: center;
 }
+.right-menu li:first-child{
+  margin-right: 10px;
+}
 .right-menu li:last-child{
-  box-sizing: border-box;
-  padding: 8px 0px;
   border: 1px solid #fff;
-  border-radius: 10px;
-
+  border-radius: 7px;
+  padding: 4px 5px;
 }
 .right-menu li:last-child:hover{
   border: 1px solid rgba(225, 225, 225,.5);
 }
 
-.right-menu li a{
+.right-menu li button{
+  background: none;
+  border: none;
   color: #fff;
+  font-size: 17px;
   font-weight: 500;
-  padding: 10px;
+  padding: 3px;
 }
-
-.right-menu li a:hover{
+.right-menu li button:hover{
   color: rgba(225, 225, 225,.5);
 }
-
