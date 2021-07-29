@@ -33,7 +33,12 @@ function getItemByAmount(data, amount){
     let smallestChangeIndex = 0;
     for(let i = 0; i<data.length; i++){
         const PRICE = data[i].price;
-        console.log(`${data[i].name}의 가격은 ${PRICE}입니다.`);
+        if(amount >= PRICE){
+            change = amount - PRICE;
+            console.log(`${data[i].name}을 구매하고 ${change}만큼 잔돈이 남습니다.`);
+        } else{
+            console.log(`${data[i].name}을 구매 할 수 없습니다.`);
+        }
     }
     console.log('반복문 끝');
 }
