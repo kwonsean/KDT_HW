@@ -29,16 +29,23 @@ alert(msg);
 // 아래에 getItemByAmount 함수를 작성하세요.
 function getItemByAmount(data, amount){
     let change = 0;
-    let smallestChange = 0;
+    let smallestChange = 9999999;
     let smallestChangeIndex = 0;
     for(let i = 0; i<data.length; i++){
         const PRICE = data[i].price;
         if(amount >= PRICE){
             change = amount - PRICE;
-            console.log(`${data[i].name}을 구매하고 ${change}만큼 잔돈이 남습니다.`);
+            if(smallestChange > change){
+                smallestChange = change;
+                smallestChangeIndex = i;
+                 console.log(`구매 할 수 있는 물건은 ${data[smallestChangeIndex].name}이고 최소 잔돈 값은 ${smallestChange}입니다.`);
+            } else{
+                continue;
+            }
+            
         } else{
-            console.log(`${data[i].name}을 구매 할 수 없습니다.`);
+           continue;
         }
     }
-    console.log('반복문 끝');
+   return data[smallestChangeIndex];
 }
