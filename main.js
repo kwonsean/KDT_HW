@@ -20,7 +20,7 @@ const amount = +line;
 const item = getItemByAmount(data, amount);
 
 const msg = item ? 
-    `${amount}원으로 살 수 있는 가장 비싼 상품은 [${item.name}]이고, 가격은 ${item.price}원입니다.` :  //객체로 리턴받네
+    `${amount}원으로 살 수 있는 가장 비싼 상품은 [${item.name}]이고, 가격은 ${item.price}원입니다.` :  //객체를 리턴해야함 
     '살 수 있는 상품이 없습니다.';
 
 // 결과 출력
@@ -29,23 +29,32 @@ alert(msg);
 // 아래에 getItemByAmount 함수를 작성하세요.
 function getItemByAmount(data, amount){
     let change = 0;
-    let smallestChange = 9999999;
+    // 가장 작은 잔돈을 체크하기 위한 변수 선언
+    let smallestChange = 9999999999;
+    // 가장 작은 잔돈이 발생할때의 인덱스 값을 저장하기 위한 변수 선언
     let smallestChangeIndex = 0;
-    for(let i = 0; i<data.length; i++){
-        const PRICE = data[i].price;
-        if(amount >= PRICE){
-            change = amount - PRICE;
-            if(smallestChange > change){
-                smallestChange = change;
-                smallestChangeIndex = i;
-                 console.log(`구매 할 수 있는 물건은 ${data[smallestChangeIndex].name}이고 최소 잔돈 값은 ${smallestChange}입니다.`);
+
+    // 먼저 입력값이 양수인지 확인 
+    if(amount > 0){
+        for(let i = 0; i<data.length; i++){
+            const PRICE = data[i].price;
+            // 구매 가능한지 확인 
+            if(amount >= PRICE){
+                change = amount - PRICE;
+                //최소 잔돈인지 확인 
+                if(smallestChange > change){
+                    smallestChange = change;
+                    smallestChangeIndex = i;
+                } else{
+                    continue;
+                }
+                
             } else{
-                continue;
+            continue;
             }
-            
-        } else{
-           continue;
         }
+    } else{
+        return null;
     }
    return data[smallestChangeIndex];
-}
+};
