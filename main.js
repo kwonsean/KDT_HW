@@ -27,3 +27,13 @@ const msg = item ?
 alert(msg);
 
 // 아래에 getItemByAmount 함수를 작성하세요.
+function getItemByAmount(data, amount){
+    let change = 0;
+    let smallestChange = 0;
+    let smallestChangeIndex = 0;
+    for(let i = 0; i<data.length; i++){
+        const PRICE = data[i].price;
+        console.log(`${data[i].name}의 가격은 ${PRICE}입니다.`);
+    }
+    console.log('반복문 끝');
+}
