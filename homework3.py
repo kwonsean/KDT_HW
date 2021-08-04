@@ -5,12 +5,14 @@ from email.mime.text import MIMEText
 from email.mime.multipart import MIMEMultipart
 import smtplib
 import re
+# 엑셀 파일 읽기위한 모듈
+from openpyxl import load_workbook
 
 user_input = input('키워드를 입력하세요: ')
 
 crawler = NaverNewsCrawler(user_input)
 
-user_interset = input('엑셀 파일명을 입력하세요: ')
+user_interset = input('엑셀 파일명을 입력하세요(파일명.xlsx): ')
 
 crawler.get_news(user_interset)
 
@@ -54,3 +56,8 @@ def send_mail(name, addr, subject, contents, attachment=None):
     smtp.login(SMTP_USER, SMTP_PASSWORD)
     smtp.sendmail(SMTP_USER, addr, msg.as_string())
     smtp.close()
+
+
+wb = load_workbook('email list_fastcampus news.xlsx')
+data = wb.active
+print(data)
