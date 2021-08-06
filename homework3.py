@@ -13,7 +13,6 @@ user_input = input('키워드를 입력하세요: ')
 crawler = NaverNewsCrawler(user_input)
 
 user_interset = input('엑셀 파일명을 입력하세요(파일명.xlsx): ')
-
 crawler.get_news(user_interset)
 
 SMTP_SERVER = 'smtp.gmail.com'
@@ -60,4 +59,16 @@ def send_mail(name, addr, subject, contents, attachment=None):
 
 wb = load_workbook('email list_fastcampus news.xlsx')
 data = wb.active
-print(data)
+area = data['B3:C4']
+list = []
+for row in area:
+    for cell in row:
+        list.append(cell)
+        if len(list) == 2:
+            name = list[0].value
+            addr = list[1].value
+            list = []
+            title = user_input+'에 관한 내용 정리해서 보내드립니다.'
+            contents = user_input+'에 관한 뉴스 기사 모음 파일입니다.'
+            send_mail(name, addr, title, contents, user_interset)
+            print('전송 성공')
