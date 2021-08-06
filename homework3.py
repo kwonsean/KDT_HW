@@ -58,15 +58,22 @@ def send_mail(name, addr, subject, contents, attachment=None):
 
 wb = load_workbook('email list_fastcampus news.xlsx')
 data = wb.active
+# 이름과 이메일이 지정된 곳을 범위로 지정
 area = data['B3:C4']
+# 한줄 한줄 내용을 임시로 저장할 빈 리스트 선언
 list = []
+# 2개의 for문을 이용하여 B3-B4-C3-C4 순서로 cell이 조회되도록 함
+# 이때 cell의 value값을 list에 넣는다.
 for row in area:
     for cell in row:
-        list.append(cell)
+        list.append(cell.value)
+        # list의 길이가 2가 되면 즉, 리스트에 이름과 이메일이 하나씩 들어가면 각 값을 name과 addr 변수에 넣어준다.
         if len(list) == 2:
-            name = list[0].value
-            addr = list[1].value
+            name = list[0]
+            addr = list[1]
+            # 이후 리스트는 다시 빈 리스트로 초기화를 한다.
             list = []
+            # 앞서 user가 입력한 키워드를 중심으로 제목과 내용을 작성한다.
             title = user_input+'에 관한 내용 정리해서 보내드립니다.'
             contents = user_input+'에 관한 뉴스 기사 모음 파일입니다.'
             send_mail(name, addr, title, contents, user_interset)
