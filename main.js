@@ -30,31 +30,20 @@ alert(msg);
 
 // 아래에 getItemByAmount 함수를 작성하세요.
 function getItemByAmount(data, amount){
-    let change = 0;
-    // 가장 작은 잔돈을 체크하기 위한 변수 선언
-    let smallestChange = 9999999999;
-    // 가장 작은 잔돈이 발생할때의 인덱스 값을 저장하기 위한 변수 선언
-    let smallestChangeIndex = 0;
 
     // 먼저 입력값이 양수인지 확인 
     if(amount > 0){
-        const result = data.filter(function (item, index, self){
-            const PRICE = item.price;
-            if (amount >= PRICE){
-                change = amount - PRICE
-                if(smallestChange > change){
-                    smallestChange = change
-                    smallestChangeIndex = index
-                }
-                //filter함수는 true인 값들을 배열속으로 모두 return하기 때문에 우선 최소잔돈이 초기화 될때마다 result배열에 return시행
-                if (index == smallestChangeIndex ){
-                    return self[smallestChangeIndex]
-                }
-        }
-        });
-        // result에는 최소 잔돈이 초기화 될때마다 객체의 형태로 배열에 추가가 되었으니 가장 마지막에 추가된 요소가 가장 작은 잔돈을 발생시키는 객체이다
-        endGame = result.pop()
-        return endGame
+        // 입력값보다 물건가격이 작은 객체들을 걸러서 result에 객체를 담은 배열 형식으로 담아준다.
+        const uCanBuy = data.filter( data_item =>  {if(amount - data_item.price >= 0) return data_item});
+
+        // 살 수 있는 물건들을 모아둔 배열에서 가격만을 뽑아 새로운 배열을 만들어 준다.
+        const priceList = uCanBuy.map(CanBuyItem => CanBuyItem.price)
+
+        // 가격만 들어있는 배열에서 가장 큰수를 찾아 그 수의 index값을 id변수에 넣어준다. 
+        const id = priceList.indexOf(Math.max(...priceList))
+        
+        // 가장 비싼 가격을 가지는 물건의 index값을 살 수 있는 물건들을 모아둔 배열에 넣어 객체를 리턴해 준다.
+        return uCanBuy[id]
      
     } else{
         return null;
