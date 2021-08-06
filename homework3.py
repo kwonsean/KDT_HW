@@ -78,3 +78,4 @@ for row in area:
             contents = user_input+'에 관한 뉴스 기사 모음 파일입니다.'
             send_mail(name, addr, title, contents, user_interset)
             print('전송 성공')
+
