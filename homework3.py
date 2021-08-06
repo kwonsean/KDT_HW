@@ -42,13 +42,12 @@ def send_mail(name, addr, subject, contents, attachment=None):
         from email import encoders
 
         file_data = MIMEBase('application', 'octect-stream')
-        file_data.set_payload(open(attachment, 'rb').read())
+        with open(attachment, 'rb') as file:
+            file_data.set_payload(file.read())
         encoders.encode_base64(file_data)
 
-        import os
-        filename = os.path.basename(attachment)
         file_data.add_header('Content-Disposition',
-                             'attachment; filename="'+filename+'"')
+                             "attachment", filename=attachment)
         msg.attach(file_data)
 
     smtp = smtplib.SMTP_SSL(SMTP_SERVER, SMTP_PORT)
