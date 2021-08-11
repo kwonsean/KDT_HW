@@ -47,7 +47,7 @@
                     <p>
                         <label>
                             내용<br />
-                            <input name="content" cols="55" rows="5"></input>
+                            <textarea name="content" cols="55" rows="5"></textarea>
                         </label>
                     </p>
                     <p>
@@ -59,11 +59,11 @@
                     <hr class="separator" />
                     <fieldset>
                         <legend>기분(단일선택)</legend>
-                        <input type="checkbox" name="feeling" value="Happy" id="feeling:Happy" checked />
+                        <input type="radio" name="feeling" value="Happy" id="feeling:Happy" checked />
                         <label for="feeling:Happy">행복함</label><br />
-                        <input type="checkbox" name="feeling" value="Bad" id="feeling:Bad" />
+                        <input type="radio" name="feeling" value="Bad" id="feeling:Bad" />
                         <label for="feeling:Bad">나쁨</label><br />
-                        <input type="checkbox" name="feeling" value="Sad" id="feeling:Sad" />
+                        <input type="radio" name="feeling" value="Sad" id="feeling:Sad" />
                         <label for="feeling:Sad">슬픔</label><br />
                     </fieldset>
                     <fieldset>
@@ -79,8 +79,8 @@
                         <label for="category:ETC">기타 </label><br />
                     </fieldset>
                     <footer class="buttons">
-                        <button type="button">글쓰기</button>
-                        <button type="button">초기화</button>
+                        <button type="submit">글쓰기</button>
+                        <button type="reset">초기화</button>
                     </footer>
                 </form>
             </div>
