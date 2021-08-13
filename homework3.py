@@ -58,8 +58,8 @@ def send_mail(name, addr, subject, contents, attachment=None):
     smtp.close()
 
 
-wb = load_workbook('email list_fastcampus news.xlsx')
-data = wb.active
+emailListFile = load_workbook('email list_fastcampus news.xlsx')
+data = emailListFile.active
 # 이름과 이메일이 지정된 곳을 범위로 지정
 area = data['B3:C4']
 # 한줄 한줄 내용을 임시로 저장할 빈 리스트 선언
