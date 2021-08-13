@@ -1,9 +1,9 @@
-# 엑셀에 데이터를 저장하기 위한 모듈
-from openpyxl import Workbook
-
 # 웹에서 데이터를 크롤링하기 위한 모듈
 import requests
 from bs4 import BeautifulSoup
+
+# 엑셀에 데이터를 저장하기 위한 모듈
+from openpyxl import Workbook
 
 
 class NaverNewsCrawler:

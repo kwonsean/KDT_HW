@@ -1,12 +1,14 @@
-# 웹크롤링을 위한 모듈
-from NaverNewsCrawler import NaverNewsCrawler
 # 이메일 발송을 위한 모듈들
-from email.mime.text import MIMEText
-from email.mime.multipart import MIMEMultipart
 import smtplib
 import re
+from email.mime.text import MIMEText
+from email.mime.multipart import MIMEMultipart
+
 # 엑셀 파일 읽기위한 모듈
 from openpyxl import load_workbook
+
+# 웹크롤링을 위한 모듈
+from NaverNewsCrawler import NaverNewsCrawler
 
 user_input = input('키워드를 입력하세요: ')
 
@@ -78,4 +80,3 @@ for row in area:
             contents = user_input+'에 관한 뉴스 기사 모음 파일입니다.'
             send_mail(name, addr, title, contents, user_interset)
             print('전송 성공')
-
